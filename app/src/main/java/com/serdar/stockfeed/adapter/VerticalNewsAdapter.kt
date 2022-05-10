@@ -31,11 +31,8 @@ class VerticalNewsAdapter(private val articles: List<Article>, private val onIte
                 binding.date = it.split(DATE_SPLITTER)[0]
             }
             binding.article = article
-            val options = RequestOptions()
-                .override(50, 50)
             Glide.with(binding.root.context)
                 .asBitmap()
-                .apply(options)
                 .load(article.urlToImage)
                 .into(binding.ivBanner)
 
