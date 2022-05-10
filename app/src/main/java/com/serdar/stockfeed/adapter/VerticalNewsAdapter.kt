@@ -48,6 +48,7 @@ class VerticalNewsAdapter(private val articles: List<Article>, private val onIte
             fun from(parent: ViewGroup): ArticleVH {
                 val inflater = LayoutInflater.from(parent.context)
                 val binding = ItemNewsVerticalBinding.inflate(inflater, parent, false)
+                binding.root.layoutParams.width = parent.width
                 return ArticleVH(binding)
             }
         }
