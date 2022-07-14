@@ -40,6 +40,8 @@ class StocksViewModel(private val stockRepository: StockRepository): ViewModel()
         }
     }
 
+    //This fun parses the price list file downloaded from repository and encapsulates the prices
+    //in a live data so that it can be updated on UI side periodically with minimum effort
     fun parseFile(inputStream: InputStream) {
         val list = mutableListOf<Pair<String, MutableLiveData<String>>>()
         val reader = BufferedReader(InputStreamReader(inputStream))
@@ -59,6 +61,8 @@ class StocksViewModel(private val stockRepository: StockRepository): ViewModel()
         getRandomPrices()
     }
 
+    //This fun adds dynamic prices from each stock into a list which is held in a map
+    //using the stock name as key and price list as value
     private fun addPrice(stock: Stock) {
         if (prices[stock.name] == null) {
             prices[stock.name] = mutableListOf(stock.price)
@@ -68,6 +72,8 @@ class StocksViewModel(private val stockRepository: StockRepository): ViewModel()
         }
     }
 
+    //This fun simulates the dynamic changes on the stock market
+    //with recursive call on itself
     private fun getRandomPrices() {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
