@@ -1,6 +1,6 @@
 # StockFeed
 
-> A Mobile App to display news feed and stock tickers.  
+> A Mobile App to display news feed and live stock prices.  
 > Written in Kotlin with MVVM architecture.
 
 ##  Preview
